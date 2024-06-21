@@ -14,8 +14,12 @@
   --Text-Primary: rgba(255, 255, 255, 0.85);
 }
 
+.take-fill{
+  color: var(--Text-Primary);
+}
+
 .take-fill svg path {
-  fill: var(--Text-Primary, rgba(0, 0, 0, 0.85));
+  fill: var(--Text-Primary);
   fill-opacity: 0.85;
 }
 

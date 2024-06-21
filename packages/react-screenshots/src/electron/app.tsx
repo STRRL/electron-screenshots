@@ -85,7 +85,7 @@ export default function App (): JSX.Element {
   }, [onCancel])
 
   return (
-    <div className='body'>
+    <div className='body light'>
       <Screenshots
         url={url}
         width={width}

@@ -12,7 +12,7 @@
   "scripts": {
     "start": "vite",
     "dev": "tsc --watch",
-    "build": "npm run lint && npm run clean && npm run build:web && npm run build:electron && npm run build:lib",
+    "build": "npm run lint && npm run clean && npm run build:web && npm run build:electron",
     "build:web": "vite build --mode web",
     "build:electron": "vite build --mode electron",
     "build:lib": "vite build --mode lib && tsc --project tsconfig.build.json",
