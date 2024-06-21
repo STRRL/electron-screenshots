@@ -2,7 +2,7 @@ import React, { ReactElement, useCallback } from 'react'
 import ScreenshotsButton from '../../ScreenshotsButton'
 import useHistory from '../../hooks/useHistory'
 import useLang from '../../hooks/useLang'
-import IconRedo from "../../icons/IconRedo";
+import IconRedo from '../../icons/IconRedo'
 
 export default function Redo (): ReactElement {
   const lang = useLang()

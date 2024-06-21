@@ -1,10 +1,10 @@
-import Icon from './icon.svg?react'
+import Icon from './icon.svg'
 import React from 'react'
 
-export default function IconDraw() {
+export default function IconDraw () {
   return (
-    <div className={'take-fill icon-p-6'}>
-      <Icon/>
+    <div className='take-fill icon-p-6'>
+      <Icon />
     </div>
   )
 }

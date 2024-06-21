@@ -12,7 +12,7 @@ import useBounds from '../../hooks/useBounds'
 import useHistory from '../../hooks/useHistory'
 import useCanvasContextRef from '../../hooks/useCanvasContextRef'
 import useLang from '../../hooks/useLang'
-import IconMosic from "../../icons/IconMosic";
+import IconMosic from '../../icons/IconMosic'
 
 export interface MosaicTile {
   x: number

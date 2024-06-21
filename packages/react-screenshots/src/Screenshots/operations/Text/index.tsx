@@ -18,7 +18,7 @@ import useDrawSelect from '../../hooks/useDrawSelect'
 import useCanvasMousemove from '../../hooks/useCanvasMousemove'
 import useCanvasMouseup from '../../hooks/useCanvasMouseup'
 import useLang from '../../hooks/useLang'
-import IconText from "../../icons/IconText";
+import IconText from '../../icons/IconText'
 
 export interface TextData {
   size: number;

@@ -13,7 +13,7 @@ import useDrawSelect from '../../hooks/useDrawSelect'
 import { isHit } from '../utils'
 import draw from './draw'
 import useLang from '../../hooks/useLang'
-import IconDraw from "../../icons/IconDraw";
+import IconDraw from '../../icons/IconDraw'
 
 export interface BrushData {
   size: number

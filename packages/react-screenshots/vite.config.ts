@@ -6,14 +6,18 @@ import { defineConfig } from 'vite'
 export default defineConfig(({ command, mode }) => {
   if (command === 'serve') {
     return {
-      plugins: [react(), svgr()]
+      plugins: [react(), svgr({
+        include: './src/**/*.svg'
+      })]
     }
   }
 
   if (mode === 'web') {
     return {
       base: './',
-      plugins: [react(), svgr()]
+      plugins: [react(), svgr({
+        include: './src/**/*.svg'
+      })]
     }
   }
 
@@ -28,7 +32,9 @@ export default defineConfig(({ command, mode }) => {
           }
         }
       },
-      plugins: [react(), svgr()]
+      plugins: [react(), svgr({
+        include: './src/**/*.svg'
+      })]
     }
   }
 
@@ -49,7 +55,9 @@ export default defineConfig(({ command, mode }) => {
         react({
           jsxRuntime: 'classic'
         }),
-        svgr()
+        svgr({
+          include: '**/*.svg'
+        })
       ]
     }
   }

@@ -13,7 +13,7 @@ import ScreenshotsSizeColor from '../../ScreenshotsSizeColor'
 import { HistoryItemEdit, HistoryItemSource, HistoryItemType } from '../../types'
 import { isHit, isHitCircle } from '../utils'
 import draw, { getEditedEllipseData } from './draw'
-import IconCircle from "../../icons/IconCircle";
+import IconCircle from '../../icons/IconCircle'
 
 export interface EllipseData {
   size: number
