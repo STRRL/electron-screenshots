@@ -13,6 +13,7 @@ import useDrawSelect from '../../hooks/useDrawSelect'
 import { isHit } from '../utils'
 import draw from './draw'
 import useLang from '../../hooks/useLang'
+import IconDraw from "../../icons/IconDraw";
 
 export interface BrushData {
   size: number
@@ -160,7 +161,7 @@ export default function Brush (): ReactElement {
   return (
     <ScreenshotsButton
       title={lang.operation_brush_title}
-      icon='icon-brush'
+      icon={<IconDraw />}
       checked={checked}
       onClick={onSelectBrush}
       option={<ScreenshotsSizeColor size={size} color={color} onSizeChange={setSize} onColorChange={setColor} />}

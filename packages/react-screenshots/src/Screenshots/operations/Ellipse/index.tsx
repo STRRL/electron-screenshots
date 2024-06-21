@@ -13,6 +13,7 @@ import ScreenshotsSizeColor from '../../ScreenshotsSizeColor'
 import { HistoryItemEdit, HistoryItemSource, HistoryItemType } from '../../types'
 import { isHit, isHitCircle } from '../utils'
 import draw, { getEditedEllipseData } from './draw'
+import IconCircle from "../../icons/IconCircle";
 
 export interface EllipseData {
   size: number
@@ -236,7 +237,7 @@ export default function Ellipse (): ReactElement {
   return (
     <ScreenshotsButton
       title={lang.operation_ellipse_title}
-      icon='icon-ellipse'
+      icon={<IconCircle />}
       checked={checked}
       onClick={onSelectEllipse}
       option={<ScreenshotsSizeColor size={size} color={color} onSizeChange={setSize} onColorChange={setColor} />}

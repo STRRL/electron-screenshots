@@ -18,6 +18,7 @@ import useDrawSelect from '../../hooks/useDrawSelect'
 import useCanvasMousemove from '../../hooks/useCanvasMousemove'
 import useCanvasMouseup from '../../hooks/useCanvasMouseup'
 import useLang from '../../hooks/useLang'
+import IconText from "../../icons/IconText";
 
 export interface TextData {
   size: number;
@@ -277,7 +278,7 @@ export default function Text (): ReactElement {
     <>
       <ScreenshotsButton
         title={lang.operation_text_title}
-        icon='icon-text'
+        icon={<IconText />}
         checked={checked}
         onClick={onSelectText}
         option={

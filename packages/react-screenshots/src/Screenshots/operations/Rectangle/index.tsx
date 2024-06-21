@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback, useRef, useState } from 'react'
+import React, {ReactElement, useCallback, useRef, useState} from 'react'
 import useCanvasContextRef from '../../hooks/useCanvasContextRef'
 import useCanvasMousedown from '../../hooks/useCanvasMousedown'
 import useCanvasMousemove from '../../hooks/useCanvasMousemove'
@@ -10,9 +10,10 @@ import useLang from '../../hooks/useLang'
 import useOperation from '../../hooks/useOperation'
 import ScreenshotsButton from '../../ScreenshotsButton'
 import ScreenshotsSizeColor from '../../ScreenshotsSizeColor'
-import { HistoryItemSource, HistoryItemEdit, HistoryItemType } from '../../types'
-import { isHit, isHitCircle } from '../utils'
-import draw, { getEditedRectangleData } from './draw'
+import {HistoryItemSource, HistoryItemEdit, HistoryItemType} from '../../types'
+import {isHit, isHitCircle} from '../utils'
+import draw, {getEditedRectangleData} from './draw'
+import IconSquare from "../../icons/IconSquare";
 
 export interface RectangleData {
   size: number
@@ -43,7 +44,7 @@ export interface RectangleEditData {
   y2: number
 }
 
-export default function Rectangle (): ReactElement {
+export default function Rectangle(): ReactElement {
   const lang = useLang()
   const [history, historyDispatcher] = useHistory()
   const [operation, operationDispatcher] = useOperation()
@@ -78,7 +79,7 @@ export default function Rectangle (): ReactElement {
       const source = action as HistoryItemSource<RectangleData, RectangleEditData>
       selectRectangle()
 
-      const { x1, y1, x2, y2 } = getEditedRectangleData(source)
+      const {x1, y1, x2, y2} = getEditedRectangleData(source)
 
       let type = RectangleEditType.Move
       if (
@@ -162,7 +163,7 @@ export default function Rectangle (): ReactElement {
         return
       }
 
-      const { left, top } = canvasContextRef.current.canvas.getBoundingClientRect()
+      const {left, top} = canvasContextRef.current.canvas.getBoundingClientRect()
       const x = e.clientX - left
       const y = e.clientY - top
       rectangleRef.current = {
@@ -200,7 +201,7 @@ export default function Rectangle (): ReactElement {
           historyDispatcher.set(history)
         }
       } else if (rectangleRef.current) {
-        const { left, top } = canvasContextRef.current.canvas.getBoundingClientRect()
+        const {left, top} = canvasContextRef.current.canvas.getBoundingClientRect()
         const rectangleData = rectangleRef.current.data
         rectangleData.x2 = e.clientX - left
         rectangleData.y2 = e.clientY - top
@@ -236,10 +237,10 @@ export default function Rectangle (): ReactElement {
   return (
     <ScreenshotsButton
       title={lang.operation_rectangle_title}
-      icon='icon-rectangle'
+      icon={<IconSquare />}
       checked={checked}
       onClick={onSelectRectangle}
-      option={<ScreenshotsSizeColor size={size} color={color} onSizeChange={setSize} onColorChange={setColor} />}
+      option={<ScreenshotsSizeColor size={size} color={color} onSizeChange={setSize} onColorChange={setColor}/>}
     />
   )
 }

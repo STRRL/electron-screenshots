@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback } from 'react'
+import React, {ReactElement, useCallback} from 'react'
 import useStore from '../../hooks/useStore'
 import useCall from '../../hooks/useCall'
 import useCanvasContextRef from '../../hooks/useCanvasContextRef'
@@ -6,9 +6,10 @@ import useHistory from '../../hooks/useHistory'
 import useReset from '../../hooks/useReset'
 import ScreenshotsButton from '../../ScreenshotsButton'
 import composeImage from '../../composeImage'
+import IconRight from "../../icons/IconRight";
 
-export default function Ok (): ReactElement {
-  const { image, width, height, history, bounds, lang } = useStore()
+export default function Ok(): ReactElement {
+  const {image, width, height, history, bounds, lang} = useStore()
   const canvasContextRef = useCanvasContextRef()
   const [, historyDispatcher] = useHistory()
   const call = useCall()
@@ -33,5 +34,5 @@ export default function Ok (): ReactElement {
     })
   }, [canvasContextRef, historyDispatcher, image, width, height, history, bounds, call, reset])
 
-  return <ScreenshotsButton title={lang.operation_ok_title} icon='icon-ok' onClick={onClick} />
+  return <ScreenshotsButton title={lang.operation_ok_title} icon={<IconRight />} onClick={onClick}/>
 }

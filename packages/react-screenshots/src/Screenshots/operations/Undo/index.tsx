@@ -2,6 +2,7 @@ import React, { ReactElement, useCallback } from 'react'
 import ScreenshotsButton from '../../ScreenshotsButton'
 import useHistory from '../../hooks/useHistory'
 import useLang from '../../hooks/useLang'
+import IconUndo from "../../icons/IconUndo";
 
 export default function Undo (): ReactElement {
   const lang = useLang()
@@ -14,7 +15,7 @@ export default function Undo (): ReactElement {
   return (
     <ScreenshotsButton
       title={lang.operation_undo_title}
-      icon='icon-undo'
+      icon={<IconUndo />}
       disabled={history.index === -1}
       onClick={onClick}
     />

@@ -2,6 +2,7 @@ import React, { ReactElement, useCallback } from 'react'
 import Screenshots from '../Screenshots'
 import { Bounds } from '../Screenshots/types'
 import './app.less'
+import '../style.css'
 import imageUrl from './image.jpg'
 
 export default function App (): ReactElement {
@@ -26,7 +27,7 @@ export default function App (): ReactElement {
   }, [])
 
   return (
-    <div className='body'>
+    <div className='body dark  '>
       <Screenshots
         url={imageUrl}
         width={window.innerWidth}

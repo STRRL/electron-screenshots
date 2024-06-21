@@ -1,10 +1,11 @@
-import React, { ReactElement, useCallback } from 'react'
+import React, {ReactElement, useCallback} from 'react'
 import useCall from '../../hooks/useCall'
 import useLang from '../../hooks/useLang'
 import useReset from '../../hooks/useReset'
 import ScreenshotsButton from '../../ScreenshotsButton'
+import IconClose from "../../icons/IconClose";
 
-export default function Cancel (): ReactElement {
+export default function Cancel(): ReactElement {
   const call = useCall()
   const reset = useReset()
   const lang = useLang()
@@ -14,5 +15,5 @@ export default function Cancel (): ReactElement {
     reset()
   }, [call, reset])
 
-  return <ScreenshotsButton title={lang.operation_cancel_title} icon='icon-cancel' onClick={onClick} />
+  return <ScreenshotsButton title={lang.operation_cancel_title} icon={<IconClose />} onClick={onClick}/>
 }

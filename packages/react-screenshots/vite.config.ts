@@ -1,18 +1,19 @@
 import react from '@vitejs/plugin-react'
+import svgr from 'vite-plugin-svgr'
 import { defineConfig } from 'vite'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
   if (command === 'serve') {
     return {
-      plugins: [react()]
+      plugins: [react(), svgr()]
     }
   }
 
   if (mode === 'web') {
     return {
       base: './',
-      plugins: [react()]
+      plugins: [react(), svgr()]
     }
   }
 
@@ -27,7 +28,7 @@ export default defineConfig(({ command, mode }) => {
           }
         }
       },
-      plugins: [react()]
+      plugins: [react(), svgr()]
     }
   }
 
@@ -47,7 +48,8 @@ export default defineConfig(({ command, mode }) => {
       plugins: [
         react({
           jsxRuntime: 'classic'
-        })
+        }),
+        svgr()
       ]
     }
   }

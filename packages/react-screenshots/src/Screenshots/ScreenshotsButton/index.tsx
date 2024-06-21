@@ -10,7 +10,7 @@ import './index.less'
 
 export interface ScreenshotsButtonProps {
   title: string;
-  icon: string;
+  icon: JSX.Element;
   checked?: boolean;
   disabled?: boolean;
   option?: ReactNode;
@@ -51,7 +51,7 @@ export default memo(function ScreenshotsButton ({
         title={title}
         onClick={onButtonClick}
       >
-        <span className={icon} />
+        {icon}
       </div>
     </ScreenshotsOption>
   )
