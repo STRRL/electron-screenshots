@@ -20,6 +20,7 @@ export default function composeImage ({ image, width, height, history, bounds }:
     if (!ctx) {
       return reject(new Error('convert image to blob fail'))
     }
+    ctx?.translate(0.5, 0.5)
 
     const rx = image.naturalWidth / width
     const ry = image.naturalHeight / height

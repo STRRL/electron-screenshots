@@ -18,6 +18,7 @@ export default function isPointInDraw (
   if (!ctx) {
     return false
   }
+  ctx?.translate(0.5, 0.5)
 
   const { left, top } = canvas.getBoundingClientRect()
   const x = e.clientX - left

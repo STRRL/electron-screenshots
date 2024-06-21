@@ -189,6 +189,7 @@ export default function Mosaic (): ReactElement {
     if (!canvasContext) {
       return
     }
+    canvasContext?.translate(0.5, 0.5)
 
     $canvas.width = bounds.width
     $canvas.height = bounds.height
