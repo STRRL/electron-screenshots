@@ -35,7 +35,7 @@ export default function Brush (): ReactElement {
   const canvasContextRef = useCanvasContextRef()
   const [history, historyDispatcher] = useHistory()
   const [size, setSize] = useState(3)
-  const [color, setColor] = useState('#ee5126')
+  const [color, setColor] = useState('#E23E3E')
   const brushRef = useRef<HistoryItemSource<BrushData, BrushEditData> | null>(null)
   const brushEditRef = useRef<HistoryItemEdit<BrushEditData, BrushData> | null>(null)
 
@@ -46,13 +46,20 @@ export default function Brush (): ReactElement {
     cursorDispatcher.set('default')
   }, [operationDispatcher, cursorDispatcher])
 
+  const unselectOperation = useCallback(() => {
+    operationDispatcher.reset()
+    cursorDispatcher.reset()
+  }, [cursorDispatcher, operationDispatcher])
+
   const onSelectBrush = useCallback(() => {
     if (checked) {
+      unselectOperation()
+      historyDispatcher.clearSelect()
       return
     }
     selectBrush()
     historyDispatcher.clearSelect()
-  }, [checked, selectBrush, historyDispatcher])
+  }, [checked, selectBrush, historyDispatcher, unselectOperation])
 
   const onDrawSelect = useCallback(
     (action: HistoryItemSource<unknown, unknown>, e: MouseEvent) => {

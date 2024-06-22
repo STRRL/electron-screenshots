@@ -14,6 +14,7 @@ import { HistoryItemSource, HistoryItemEdit, HistoryItemType } from '../../types
 import { isHit, isHitCircle } from '../utils'
 import draw, { getEditedRectangleData } from './draw'
 import IconSquare from '../../icons/IconSquare'
+import IconMosic from '../../icons/IconMosic'
 
 export interface RectangleData {
   size: number
@@ -51,11 +52,16 @@ export default function Rectangle (): ReactElement {
   const [, cursorDispatcher] = useCursor()
   const canvasContextRef = useCanvasContextRef()
   const [size, setSize] = useState(3)
-  const [color, setColor] = useState('#ee5126')
+  const [color, setColor] = useState('#E23E3E')
   const rectangleRef = useRef<HistoryItemSource<RectangleData, RectangleEditData> | null>(null)
   const rectangleEditRef = useRef<HistoryItemEdit<RectangleEditData, RectangleData> | null>(null)
 
   const checked = operation === 'Rectangle'
+
+  const unselectOperation = useCallback(() => {
+    operationDispatcher.reset()
+    cursorDispatcher.reset()
+  }, [cursorDispatcher, operationDispatcher])
 
   const selectRectangle = useCallback(() => {
     operationDispatcher.set('Rectangle')
@@ -64,11 +70,13 @@ export default function Rectangle (): ReactElement {
 
   const onSelectRectangle = useCallback(() => {
     if (checked) {
+      unselectOperation()
+      historyDispatcher.clearSelect()
       return
     }
     selectRectangle()
     historyDispatcher.clearSelect()
-  }, [checked, selectRectangle, historyDispatcher])
+  }, [checked, selectRectangle, historyDispatcher, unselectOperation])
 
   const onDrawSelect = useCallback(
     (action: HistoryItemSource<unknown, unknown>, e: MouseEvent) => {
@@ -237,7 +245,7 @@ export default function Rectangle (): ReactElement {
   return (
     <ScreenshotsButton
       title={lang.operation_rectangle_title}
-      icon={<IconSquare />}
+      icon={(<IconSquare />)}
       checked={checked}
       onClick={onSelectRectangle}
       option={<ScreenshotsSizeColor size={size} color={color} onSizeChange={setSize} onColorChange={setColor} />}

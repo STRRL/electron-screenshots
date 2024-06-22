@@ -10,7 +10,7 @@ export interface ScreenshotsOptionProps {
   children: ReactElement
 }
 
-export type Position = Point
+// export type Position = Point
 
 export enum Placement {
   Bottom = 'bottom',
@@ -23,7 +23,7 @@ export default memo(function ScreenshotsOption ({ open, content, children }: Scr
   const contentRef = useRef<HTMLDivElement>(null)
   const operationsRect = useContext(ScreenshotsOperationsCtx)
   const [placement, setPlacement] = useState<Placement>(Placement.Bottom)
-  const [position, setPosition] = useState<Position | null>(null)
+  // const [position, setPosition] = useState<Position | null>(null)
   const [offsetX, setOffsetX] = useState<number>(0)
 
   const getPopoverEl = () => {
@@ -88,12 +88,12 @@ export default memo(function ScreenshotsOption ({ open, content, children }: Scr
     if (currentPlacement !== placement) {
       setPlacement(currentPlacement)
     }
-    if (position?.x !== x || position.y !== y) {
-      setPosition({
-        x,
-        y
-      })
-    }
+    // if (position?.x !== x || position.y !== y) {
+    //   setPosition({
+    //     x,
+    //     y
+    //   })
+    // }
 
     if (currentOffsetX !== offsetX) {
       setOffsetX(currentOffsetX)
@@ -107,21 +107,17 @@ export default memo(function ScreenshotsOption ({ open, content, children }: Scr
       })}
       {open &&
         content &&
-        createPortal(
           <div
             ref={contentRef}
             className='screenshots-option'
             style={{
-              visibility: position ? 'visible' : 'hidden',
-              transform: `translate(${position?.x ?? 0}px, ${position?.y ?? 0}px)`
+              // visibility: position ? 'visible' : 'hidden',
+              // transform: `translate(${position?.x ?? 0}px, ${position?.y ?? 0}px)`
             }}
-            data-placement={placement}
+            // data-placement={placement}
           >
             <div className='screenshots-option-container'>{content}</div>
-            <div className='screenshots-option-arrow' style={{ marginLeft: offsetX }} />
-          </div>,
-          getPopoverEl()
-        )}
+          </div>}
     </>
   )
 })

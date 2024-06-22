@@ -1,20 +1,18 @@
 @import '../var.less';
 
 .screenshots-size {
-  height: @sizecolor-size;
   display: flex;
   align-items: center;
 
   &-item {
-    width: @sizecolor-size;
-    height: @sizecolor-size;
     position: relative;
-    margin: 0 3px;
     cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
   }
 
   &-pointer {
-    background-color: #555;
+    background-color: var(--Text-Primary);
     border-radius: 50%;
     position: absolute;
     top: 50%;
@@ -22,7 +20,8 @@
     transform: translate(-50%, -50%);
   }
 
-  &-active > &-pointer {
-    background-color: #39f;
+  &-active {
+    background-color: var(--Fills-Quinary);
   }
+
 }

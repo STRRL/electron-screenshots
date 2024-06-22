@@ -118,7 +118,7 @@ export default function Text (): ReactElement {
   const [, cursorDispatcher] = useCursor()
   const canvasContextRef = useCanvasContextRef()
   const [size, setSize] = useState(3)
-  const [color, setColor] = useState('#ee5126')
+  const [color, setColor] = useState('#E23E3E')
   const textRef = useRef<HistoryItemSource<TextData, TextEditData> | null>(
     null
   )
@@ -139,6 +139,8 @@ export default function Text (): ReactElement {
 
   const onSelectText = useCallback(() => {
     if (checked) {
+      unselectOperation()
+      historyDispatcher.clearSelect()
       return
     }
     selectText()

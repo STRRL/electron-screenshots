@@ -1,4 +1,4 @@
-import React, { memo, ReactElement } from 'react'
+import React, {memo, ReactElement} from 'react'
 import './index.less'
 
 export interface SizeProps {
@@ -6,7 +6,7 @@ export interface SizeProps {
   onChange: (value: number) => void
 }
 
-export default memo(function ScreenshotsSize ({ value, onChange }: SizeProps): ReactElement {
+export default memo(function ScreenshotsSize({value, onChange}: SizeProps): ReactElement {
   const sizes = [3, 6, 9]
   return (
     <div className='screenshots-size'>
@@ -19,13 +19,21 @@ export default memo(function ScreenshotsSize ({ value, onChange }: SizeProps): R
 
         return (
           <div key={size} className={classNames.join(' ')} onClick={() => onChange && onChange(size)}>
-            <div
-              className='screenshots-size-pointer'
-              style={{
-                width: size * 1.8,
-                height: size * 1.8
-              }}
-            />
+
+            <div style={{
+              display: 'block',
+              width: '16px',
+              height: '16px'
+            }}
+            >
+              <div
+                className='screenshots-size-pointer'
+                style={{
+                  width: size * 1.8,
+                  height: size * 1.8
+                }}
+              />
+            </div>
           </div>
         )
       })}

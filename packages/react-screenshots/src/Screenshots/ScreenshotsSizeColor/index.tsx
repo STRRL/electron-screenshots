@@ -18,7 +18,9 @@ export default memo(function ScreenshotsSizeColor ({
 }: SizeColorProps): ReactElement {
   return (
     <div className='screenshots-sizecolor'>
+      <div className='screenshots-operations-divider' />
       <ScreenshotsSize value={size} onChange={onSizeChange} />
+      <div className='screenshots-operations-divider' />
       <ScreenshotsColor value={color} onChange={onColorChange} />
     </div>
   )

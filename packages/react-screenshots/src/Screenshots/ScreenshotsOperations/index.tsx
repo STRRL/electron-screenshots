@@ -1,9 +1,10 @@
 import React, { memo, MouseEvent, ReactElement, useCallback, useEffect, useRef, useState } from 'react'
 import useBounds from '../hooks/useBounds'
 import useStore from '../hooks/useStore'
-import OperationButtons from '../operations'
 import { Bounds, Position } from '../types'
 import './index.less'
+import useOperation from '../hooks/useOperation'
+import { OperationButtons, OperationButtonWithName } from '../operations'
 
 export const ScreenshotsOperationsCtx = React.createContext<Bounds | null>(null)
 
@@ -22,6 +23,8 @@ export default memo(function ScreenshotsOperations (): ReactElement | null {
     e.preventDefault()
     e.stopPropagation()
   }, [])
+
+  const [operation, operationDispatcher] = useOperation()
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
@@ -87,12 +90,23 @@ export default memo(function ScreenshotsOperations (): ReactElement | null {
         onDoubleClick={onDoubleClick}
         onContextMenu={onContextMenu}
       >
+
         <div className='screenshots-operations-buttons'>
-          {OperationButtons.map((OperationButton, index) => {
-            if (OperationButton === '|') {
+          {OperationButtonWithName.map(({ OperationButton, name, category }, index) => {
+            if (name === '|') {
               return <div key={index} className='screenshots-operations-divider' />
             } else {
-              return <OperationButton key={index} />
+              let display = 'flex'
+              if (operation) {
+                if (category === 'tool') {
+                  display = operation === name ? 'flex' : 'none'
+                }
+              }
+              return (
+                <div key={index} style={{ display }}>
+                  {OperationButton && <OperationButton />}
+                </div>
+              )
             }
           })}
         </div>

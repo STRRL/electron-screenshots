@@ -45,11 +45,16 @@ export default function Arrow (): ReactElement {
   const [history, historyDispatcher] = useHistory()
   const canvasContextRef = useCanvasContextRef()
   const [size, setSize] = useState(3)
-  const [color, setColor] = useState('#ee5126')
+  const [color, setColor] = useState('#E23E3E')
   const arrowRef = useRef<HistoryItemSource<ArrowData, ArrowEditData> | null>(null)
   const arrowEditRef = useRef<HistoryItemEdit<ArrowEditData, ArrowData> | null>(null)
 
   const checked = operation === 'Arrow'
+
+  const unselectOperation = useCallback(() => {
+    operationDispatcher.reset()
+    cursorDispatcher.reset()
+  }, [cursorDispatcher, operationDispatcher])
 
   const selectArrow = useCallback(() => {
     operationDispatcher.set('Arrow')
@@ -58,11 +63,13 @@ export default function Arrow (): ReactElement {
 
   const onSelectArrow = useCallback(() => {
     if (checked) {
+      unselectOperation()
+      historyDispatcher.clearSelect()
       return
     }
     selectArrow()
     historyDispatcher.clearSelect()
-  }, [checked, selectArrow, historyDispatcher])
+  }, [checked, selectArrow, historyDispatcher, unselectOperation])
 
   const onDrawSelect = useCallback(
     (action: HistoryItemSource<unknown, unknown>, e: MouseEvent) => {

@@ -51,7 +51,7 @@ export default function Ellipse (): ReactElement {
   const [, cursorDispatcher] = useCursor()
   const canvasContextRef = useCanvasContextRef()
   const [size, setSize] = useState(3)
-  const [color, setColor] = useState('#ee5126')
+  const [color, setColor] = useState('#E23E3E')
   const ellipseRef = useRef<HistoryItemSource<EllipseData, EllipseEditData> | null>(null)
   const ellipseEditRef = useRef<HistoryItemEdit<EllipseEditData, EllipseData> | null>(null)
 
@@ -62,13 +62,21 @@ export default function Ellipse (): ReactElement {
     cursorDispatcher.set('crosshair')
   }, [operationDispatcher, cursorDispatcher])
 
+
+  const unselectOperation = useCallback(() => {
+    operationDispatcher.reset()
+    cursorDispatcher.reset()
+  }, [cursorDispatcher, operationDispatcher])
+
   const onSelectEllipse = useCallback(() => {
     if (checked) {
+      unselectOperation()
+      historyDispatcher.clearSelect()
       return
     }
     selectEllipse()
     historyDispatcher.clearSelect()
-  }, [checked, selectEllipse, historyDispatcher])
+  }, [checked, selectEllipse, historyDispatcher, unselectOperation])
 
   const onDrawSelect = useCallback(
     (action: HistoryItemSource<unknown, unknown>, e: MouseEvent) => {

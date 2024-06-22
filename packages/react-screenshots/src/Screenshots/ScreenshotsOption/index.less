@@ -1,9 +1,6 @@
 @import '../var.less';
 
 .screenshots-option {
-  position: absolute;
-  left: 0;
-  top: 0;
   font-family: @font-family;
 
   &,
@@ -13,12 +10,10 @@
   }
 
   &-container {
-    height: @button-size + 3 * 2 + 2;
-    background-color: #fff;
-    padding: 3px;
+    padding: 2px;
     border-radius: 2px;
-    border: 1px solid #ddd;
-    background-color: #fff;
+    display: flex;
+    align-items: center;
   }
 
   &-arrow {
@@ -27,24 +22,24 @@
   }
 
   &[data-placement='top'] {
-    transform: translate(-50%, -11px);
+    //transform: translate(-50%, -11px);
   }
 
   &[data-placement='top'] &-arrow {
-    transform: translate(-50%, -1px);
+    //transform: translate(-50%, -1px);
     border-top-color: #fff;
-    top: 100%;
-    left: 50%;
+    //top: 100%;
+    //left: 50%;
   }
 
   &[data-placement='bottom'] {
-    transform: translate(-50%, 11px);
+    //transform: translate(-50%, 11px);
   }
 
   &[data-placement='bottom'] &-arrow {
-    transform: translate(-50%, 1px);
+    //transform: translate(-50%, 1px);
     border-bottom-color: #fff;
-    bottom: 100%;
-    left: 50%;
+    //bottom: 100%;
+    //left: 50%;
   }
 }

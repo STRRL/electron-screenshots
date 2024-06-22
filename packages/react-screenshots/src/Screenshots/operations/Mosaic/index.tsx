@@ -68,13 +68,20 @@ export default function Mosaic (): ReactElement {
     cursorDispatcher.set('crosshair')
   }, [operationDispatcher, cursorDispatcher])
 
+  const unselectOperation = useCallback(() => {
+    operationDispatcher.reset()
+    cursorDispatcher.reset()
+  }, [cursorDispatcher, operationDispatcher])
+
   const onSelectMosaic = useCallback(() => {
     if (checked) {
+      unselectOperation()
+      historyDispatcher.clearSelect()
       return
     }
     selectMosaic()
     historyDispatcher.clearSelect()
-  }, [checked, selectMosaic, historyDispatcher])
+  }, [checked, selectMosaic, historyDispatcher, unselectOperation])
 
   const onMousedown = useCallback(
     (e: MouseEvent): void => {
