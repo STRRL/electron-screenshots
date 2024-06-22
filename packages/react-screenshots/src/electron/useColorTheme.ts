@@ -6,7 +6,7 @@ export const useColorTheme = () => {
   useEffect(() => {
     const updateColorTheme = async () => {
       try {
-        const theme = await window.electron.invoke('get-color-theme') as 'system' | 'light' | 'dark'
+        const theme = await window.electron?.invoke('get-color-theme') as 'system' | 'light' | 'dark'
         setTheme(theme)
       } catch (e) {
         console.error(e)
@@ -18,9 +18,9 @@ export const useColorTheme = () => {
     const handleColorThemeChanged = () => {
       updateColorTheme().catch((err) => console.error(err))
     }
-    window.electron.on('color-theme-changed', handleColorThemeChanged)
+    window.electron?.on('color-theme-changed', handleColorThemeChanged)
     return () => {
-      window.electron.off('color-theme-changed', handleColorThemeChanged)
+      window.electron?.off('color-theme-changed', handleColorThemeChanged)
     }
   }, [
     setTheme
@@ -28,7 +28,7 @@ export const useColorTheme = () => {
 
   const setColorTheme = (newTheme: 'system' | 'light' | 'dark') => {
     setTheme(newTheme)
-    window?.electron.send('set-color-theme', newTheme)
+    window?.electron?.send('set-color-theme', newTheme)
   }
 
   return [theme, setColorTheme] as const
