@@ -28,4 +28,19 @@ const zhCN: Lang = {
   operation_rectangle_title: '矩形'
 }
 
-export default zhCN
+const enUS: Lang = {
+  magnifier_position_label: 'Position',
+  operation_ok_title: 'OK',
+  operation_cancel_title: 'Cancel',
+  operation_save_title: 'Save',
+  operation_redo_title: 'Redo',
+  operation_undo_title: 'Undo',
+  operation_mosaic_title: 'Mosaic',
+  operation_text_title: 'Text',
+  operation_brush_title: 'Brush',
+  operation_arrow_title: 'Arrow',
+  operation_ellipse_title: 'Ellipse',
+  operation_rectangle_title: 'Rectangle'
+}
+
+export default enUS

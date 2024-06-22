@@ -137,6 +137,11 @@ export default function Text (): ReactElement {
     cursorDispatcher.set('default')
   }, [operationDispatcher, cursorDispatcher])
 
+  const unselectOperation = useCallback(() => {
+    operationDispatcher.reset()
+    cursorDispatcher.reset()
+  }, [cursorDispatcher, operationDispatcher])
+
   const onSelectText = useCallback(() => {
     if (checked) {
       unselectOperation()
@@ -145,7 +150,7 @@ export default function Text (): ReactElement {
     }
     selectText()
     historyDispatcher.clearSelect()
-  }, [checked, selectText, historyDispatcher])
+  }, [checked, selectText, historyDispatcher, unselectOperation])
 
   const onSizeChange = useCallback((size: number) => {
     if (textRef.current) {

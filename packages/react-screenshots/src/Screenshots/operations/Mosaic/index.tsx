@@ -226,7 +226,12 @@ export default function Mosaic (): ReactElement {
       icon={<IconMosic />}
       checked={checked}
       onClick={onSelectMosaic}
-      option={<ScreenshotsSize value={size} onChange={setSize} />}
+      option={
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <div className='screenshots-operations-divider' />
+          <ScreenshotsSize value={size} onChange={setSize} />
+        </div>
+    }
     />
   )
 }
