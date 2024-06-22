@@ -4,6 +4,7 @@
   --Fills-Quinary: rgba(0, 0, 0, 0.05);
   --Materials---Controls-Under-Window-Background: rgba(255, 255, 255, 0.45);
   --Text-Primary: rgba(0, 0, 0, 0.85);
+  --Text-Secondary: rgba(0, 0, 0, 0.55);
 }
 
 .dark {
@@ -12,16 +13,23 @@
   --Fills-Quinary: rgba(255, 255, 255, 0.05);
   --Materials---Controls-Under-Window-Background: rgba(0, 0, 0, 0.45);
   --Text-Primary: rgba(255, 255, 255, 0.85);
+  --Text-Secondary: rgba(255, 255, 255, 0.55);
 }
 
-.take-fill{
-  color: var(--Text-Primary);
-}
-
-.take-fill svg path {
-  fill: var(--Text-Primary);
+.text-primary .take-fill svg path {
+  fill: var(--Text-Primary, rgba(0, 0, 0, 0.85));
   fill-opacity: 0.85;
 }
+
+.text-secondary .take-fill svg path {
+  fill: var(--Text-Secondary, rgba(0, 0, 0, 0.85));
+  fill-opacity: 0.55;
+}
+
+/*.take-fill svg path {*/
+/*  fill: var(--Text-Primary);*/
+/*  fill-opacity: 0.85;*/
+/*}*/
 
 .icon-p-6 {
   padding: 6px;

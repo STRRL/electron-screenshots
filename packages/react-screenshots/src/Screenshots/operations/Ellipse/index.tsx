@@ -62,7 +62,6 @@ export default function Ellipse (): ReactElement {
     cursorDispatcher.set('crosshair')
   }, [operationDispatcher, cursorDispatcher])
 
-
   const unselectOperation = useCallback(() => {
     operationDispatcher.reset()
     cursorDispatcher.reset()

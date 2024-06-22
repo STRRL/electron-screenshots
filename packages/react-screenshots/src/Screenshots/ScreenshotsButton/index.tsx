@@ -1,7 +1,7 @@
-import React, {memo, PointerEvent, ReactElement, ReactNode, useCallback} from 'react'
+import React, { memo, PointerEvent, ReactElement, ReactNode, useCallback } from 'react'
 import ScreenshotsOption from '../ScreenshotsOption'
 import './index.less'
-import IconBack from "../icons/IconBack";
+import IconBack from '../icons/IconBack'
 
 export interface ScreenshotsButtonProps {
   title: string;
@@ -42,7 +42,7 @@ export default memo(function ScreenshotsButton ({
   return (
     <ScreenshotsOption open={checked} content={option}>
       <div
-        className={classNames.join(' ')}
+        className={classNames.join(' ') + ` ${(disabled ? 'text-secondary' : 'text-primary')}`}
         title={title}
         onClick={onButtonClick}
       >
