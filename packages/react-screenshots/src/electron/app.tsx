@@ -3,6 +3,7 @@ import Screenshots from '../Screenshots'
 import { Bounds } from '../Screenshots/types'
 import { Lang } from '../Screenshots/zh_CN'
 import './app.less'
+import { useDarkTheme } from './useColorTheme'
 
 export interface Display {
   id: number
@@ -85,7 +86,7 @@ export default function App (): JSX.Element {
   }, [onCancel])
 
   return (
-    <div className='body light'>
+    <div className='body'>
       <Screenshots
         url={url}
         width={width}

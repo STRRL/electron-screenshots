@@ -76,3 +76,19 @@ contextBridge.exposeInMainWorld('screenshots', {
     ipcRenderer.off(`SCREENSHOTS:${channel}`, listener);
   },
 });
+
+contextBridge.exposeInMainWorld(
+  'electron',
+  {
+    send: (channel: string, data?: any) => {
+      ipcRenderer.send(channel, data);
+    },
+    invoke: async (channel: string, data?: any) => ipcRenderer.invoke(channel, data),
+    on: (channel: string, func: any) => {
+      ipcRenderer.on(channel, (event, ...args) => func(...args));
+    },
+    off: (channel: string, func: any) => {
+      ipcRenderer.off(channel, func);
+    },
+  },
+);

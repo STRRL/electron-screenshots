@@ -189,7 +189,8 @@ export default class Screenshots extends Events {
         // mac fullscreenable 设置为 true 会导致应用崩溃
         fullscreenable: false,
         kiosk: true,
-        backgroundColor: '#00000000',
+        vibrancy: 'under-window',
+        visualEffectState: 'active',
         titleBarStyle: 'hidden',
         hasShadow: false,
         paintWhenInitiallyHidden: false,

@@ -27,7 +27,7 @@ export default function App (): ReactElement {
   }, [])
 
   return (
-    <div className='body light '>
+    <div className='body'>
       <Screenshots
         url={imageUrl}
         width={window.innerWidth}

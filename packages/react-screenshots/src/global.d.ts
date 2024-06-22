@@ -20,6 +20,12 @@ interface GlobalScreenshots {
 
 declare global {
   interface Window {
-    screenshots: GlobalScreenshots
+    screenshots: GlobalScreenshots,
+    electron: {
+      send: (channel: string, data?: any) => void;
+      invoke: (channel: string, data?: any) => Promise<any>;
+      on: (channel: string, func: (event: any, ...arg: any[]) => void) => void;
+      off: (channel: string, func: (event: any, ...arg: any[]) => void) => void;
+    };
   }
 }

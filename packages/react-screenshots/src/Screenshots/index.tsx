@@ -9,6 +9,7 @@ import ScreenshotsOperations from './ScreenshotsOperations'
 import { Bounds, Emiter, History } from './types'
 import useGetLoadedImage from './useGetLoadedImage'
 import zhCN, { Lang } from './zh_CN'
+import { useDarkTheme } from '../electron/useColorTheme'
 
 export interface ScreenshotsProps {
   url?: string
@@ -141,7 +142,7 @@ export default function Screenshots ({ url, width, height, lang, className, ...p
   return (
     <ScreenshotsContext.Provider value={{ store, dispatcher }}>
       <div
-        className={classNames.join(' ')}
+        className={classNames.join(' ') + ' ' + (useDarkTheme() ? 'dark' : 'light')}
         style={{ width, height }}
         onDoubleClick={onDoubleClick}
         onContextMenu={onContextMenu}
