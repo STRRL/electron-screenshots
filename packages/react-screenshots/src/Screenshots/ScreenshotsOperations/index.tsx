@@ -1,10 +1,10 @@
-import React, { memo, MouseEvent, ReactElement, useCallback, useEffect, useRef, useState } from 'react'
+import React, { memo, MouseEvent, ReactElement, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import useBounds from '../hooks/useBounds'
 import useStore from '../hooks/useStore'
 import { Bounds, Position } from '../types'
 import './index.less'
 import useOperation from '../hooks/useOperation'
-import { OperationButtons, OperationButtonWithName } from '../operations'
+import { OperationButtonWithName } from '../operations'
 
 export const ScreenshotsOperationsCtx = React.createContext<Bounds | null>(null)
 
@@ -27,7 +27,7 @@ export default memo(function ScreenshotsOperations (): ReactElement | null {
   const [operation, operationDispatcher] = useOperation()
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!bounds || !elRef.current) {
       return
     }
